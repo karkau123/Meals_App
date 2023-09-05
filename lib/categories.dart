@@ -8,7 +8,11 @@ class CategoriesScreen extends StatelessWidget {
 
 // below functiom will push a screen on top of a bunch of screens
   void _selectCategory(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>MealsScreen(title: 'Random Title', meals: meals[]) ,));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MealsScreen(title: 'Random Title', meals: []),
+        ));
   }
 
   @override
@@ -29,6 +33,9 @@ class CategoriesScreen extends StatelessWidget {
           for (final category in availableCategories)
             CategoryGridItem(
               category: category,
+              onSelectCategory: () {
+                _selectCategory(context);
+              },
             )
         ],
       ),
