@@ -15,15 +15,19 @@ class FiltersNotifier extends StateNotifier<Map<Filter, bool>> {
           Filter.vegeterian: false,
           Filter.vegan: false,
         });
+  void setFilters(Map<Filter, bool> chosenFilters) {
+    state = chosenFilters;
+  }
 
   void setFilter(Filter filter, bool isActive) {
     state = {
-      ...state,   // copying old map
-      filter:isActive,  // overwritting the key values.
+      ...state, // copying old map
+      filter: isActive, // overwritting the key values.
     };
   }
 }
 
-final filtersProvider = StateNotifierProvider<FiltersNotifier , Map<Filter,bool>>(
+final filtersProvider =
+    StateNotifierProvider<FiltersNotifier, Map<Filter, bool>>(
   (ref) => FiltersNotifier(),
-  );
+);
