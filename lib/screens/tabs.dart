@@ -26,23 +26,9 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-// final List<Meal> _favoriteMeals = [];
+ 
   Map<Filter, bool> _selectedFilt = kInitialFilters;
-  // void _toggleMealFavoriteStatus(Meal meal) {
-  //   final isExisting = _favoriteMeals.contains(meal);
-
-  //   if (isExisting) {
-  //     setState(() {
-  //       _favoriteMeals.remove(meal);
-  //     });
-  //     _showinfoMessage('Meal is no longer a favourite');
-  //   } else {
-  //     setState(() {
-  //       _favoriteMeals.add(meal);
-  //     });
-  //     _showinfoMessage('Meal is Marked as Favourite');
-  //   }
-  // }
+ 
 
   void _selectPage(int index) {
     setState(() {
