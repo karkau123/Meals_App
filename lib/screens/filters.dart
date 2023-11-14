@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:meals/provider/filters_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// import 'package:meals/screens/tabs.dart';
+// import 'package:meals/widgets/main_drawer.dart';
+import 'package:meals/providers/filters_provider.dart';
+
 class FiltersScreen extends ConsumerWidget {
-  const FiltersScreen({
-    super.key,
-  });
+  const FiltersScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-   final activeFilters =  ref.watch(filtersProvider);
+    final activeFilters = ref.watch(filtersProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +32,7 @@ class FiltersScreen extends ConsumerWidget {
                   ),
             ),
             subtitle: Text(
-              'only include Gluten free meals',
+              'Only include gluten-free meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -40,7 +41,7 @@ class FiltersScreen extends ConsumerWidget {
             contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
           SwitchListTile(
-               value: activeFilters[Filter.lactoseFree]!,
+            value: activeFilters[Filter.lactoseFree]!,
             onChanged: (isChecked) {
               ref
                   .read(filtersProvider.notifier)
@@ -53,7 +54,7 @@ class FiltersScreen extends ConsumerWidget {
                   ),
             ),
             subtitle: Text(
-              'only include Lactose free meals',
+              'Only include lactose-free meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -62,20 +63,20 @@ class FiltersScreen extends ConsumerWidget {
             contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
           SwitchListTile(
-          value: activeFilters[Filter.vegeterian]!,
+            value: activeFilters[Filter.vegetarian]!,
             onChanged: (isChecked) {
               ref
                   .read(filtersProvider.notifier)
-                  .setFilter(Filter.vegeterian, isChecked);
+                  .setFilter(Filter.vegetarian, isChecked);
             },
             title: Text(
-              'vegeterian',
+              'Vegetarian',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
             ),
             subtitle: Text(
-              'only include vegeterian meals',
+              'Only include vegetarian meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -84,20 +85,20 @@ class FiltersScreen extends ConsumerWidget {
             contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
           SwitchListTile(
-         value: activeFilters[Filter.vegan]!,
+            value: activeFilters[Filter.vegan]!,
             onChanged: (isChecked) {
               ref
                   .read(filtersProvider.notifier)
                   .setFilter(Filter.vegan, isChecked);
             },
             title: Text(
-              'vegan',
+              'Vegan',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
             ),
             subtitle: Text(
-              'Only include vegan meals',
+              'Only include vegan meals.',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),

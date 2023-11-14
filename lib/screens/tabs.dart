@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals/provider/favourites_provider.dart';
+
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/main_drawer.dart';
- 
-import 'package:meals/provider/filters_provider.dart';
+import 'package:meals/providers/favorites_provider.dart';
+import 'package:meals/providers/filters_provider.dart';
 
 const kInitialFilters = {
   Filter.glutenFree: false,
   Filter.lactoseFree: false,
-  Filter.vegeterian: false,
-  Filter.vegan: false,
+  Filter.vegetarian: false,
+  Filter.vegan: false
 };
 
 class TabsScreen extends ConsumerStatefulWidget {
@@ -26,8 +26,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-
-  Map<Filter, bool> _selectedFilt = kInitialFilters;
 
   void _selectPage(int index) {
     setState(() {
@@ -48,9 +46,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final meals = ref.watch(filteredMealsProvider);
-    final activeFilters = ref.watch(filtersProvider);
-
     final availableMeals = ref.watch(filteredMealsProvider);
 
     Widget activePage = CategoriesScreen(
@@ -59,10 +54,9 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     var activePageTitle = 'Categories';
 
     if (_selectedPageIndex == 1) {
-      final favouriteMeals = ref.watch(favouriteMealsprovider);
-
+      final favoriteMeals = ref.watch(favoriteMealsProvider);
       activePage = MealsScreen(
-        meals: favouriteMeals,
+        meals: favoriteMeals,
       );
       activePageTitle = 'Your Favorites';
     }
@@ -71,7 +65,9 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
-      drawer: MainDrawer(onSelectScreen: _setScreen),
+      drawer: MainDrawer(
+        onSelectScreen: _setScreen,
+      ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
