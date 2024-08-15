@@ -18,6 +18,4 @@
   <img src="https://github.com/user-attachments/assets/36995919-d4af-41d9-90eb-6b55351679f2" width="200" style="margin: 10px 20px;">
 </div>
 
-## Another Video
-
-[Watch the second video here](https://github.com/user-attachments/assets/9210bfca-de5e-4835-a233-16da9d10ad55)
+ 
